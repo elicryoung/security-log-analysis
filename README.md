@@ -32,13 +32,13 @@ By the end of Phase 1, I had successfully prepared a complete working environmen
 
 ## Section 1: MSSQL Failed Authentication Log Analysis
 
-For the first part of Phase 2, I analysed a Windows EVTX log file containing Microsoft SQL Server authentication failures. Since this was my first time working directly with Windows event logs, the initial challenge was simply understanding how Windows stores and structures logging data compared to standard text-based Linux logs.
+For the first part of Phase 2, I analysed a Windows EVTX log file containing Microsoft SQL Server authentication failures. Since this was my first time working directly with Windows event logs, the initial challenge was simply understanding how Windows stores and structures logging data.
 
 The dataset analysed was:
 
 1.MSSQL_multiple_failed_logon_EventID_18456.evtx
 
-One of the first things I learned was that Windows EVTX files are stored in a binary format rather than plain text. Because of this, the file could not be opened directly inside VS Code. To make the data readable, I converted the EVTX file into XML format using the python-evtx library inside a Python virtual environment on macOS. This gave me my first practical experience handling Windows security telemetry outside of a SIEM platform.
+One of the first things I learned was that Windows EVTX files are stored in a binary format rather than plain text. Because of this, the file could not be opened directly inside VS Code. To make the data readable, I converted the EVTX file into XML format using the python-evtx library inside a Python virtual environment on macOS. This gave me my first practical experience handling Windows security telemetry.
 
 During analysis, what immediately stood out to me was how repetitive the authentication failures were. Almost every event contained the same Event ID (18456), which represents a failed SQL Server login attempt, but the usernames being targeted kept changing rapidly between events.
 
