@@ -24,6 +24,6 @@ To support future investigations and portfolio work, I also created a reusable M
 - Indicators of compromise
 - Final assessment notes
 
-Finally, I connected the project to a private GitHub repository using Git on macOS and configured a `.gitignore` file to prevent raw security logs from being publicly uploaded. This reinforced the importance of handling security data responsibly while still maintaining version-controlled documentation and analysis notes.
+Finally, I connected the project to a GitHub repository using Git on macOS and configured a `.gitignore` file to prevent raw security logs from being publicly uploaded. This reinforced the importance of handling security data responsibly while still maintaining version-controlled documentation and analysis notes.
 
 By the end of Phase 1, I had successfully prepared a complete working environment with realistic Windows and Linux security datasets, an organised documentation workflow, and a portfolio-ready project structure prepared for deeper log analysis in later phases.
