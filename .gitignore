@@ -1,7 +1,4 @@
-# Raw logs (never commit)
-windows/*.evtx
-linux/*.log
-linux/*.csv
+
 
 # macOS / VS Code
 .DS_Store
