@@ -1,6 +1,8 @@
 # PROJECT 1: Security Event Log Analysis
 
 ---
+Find my analysis and write ups in the docs folder
+---
 
 ## Project Overview
 
