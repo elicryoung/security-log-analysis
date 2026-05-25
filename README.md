@@ -41,7 +41,6 @@ A structured project directory named `security-log-analysis` was then created, s
 
 This mirrored the type of organisation expected during real-world investigations and reinforced the importance of separating raw evidence from analysis material.
 
----
 
 ## Windows Security Datasets
 
@@ -55,7 +54,6 @@ Multiple Windows EVTX datasets were collected for investigation practice, includ
 
 These datasets were chosen because they simulate realistic attack scenarios commonly investigated within SOC environments.
 
----
 
 ## Linux Security Datasets
 
@@ -78,7 +76,6 @@ The raw logs were later used for command-line investigations using:
 
 while the structured datasets helped demonstrate how telemetry can be transformed into searchable security data.
 
----
 
 ## Documentation & Reporting Workflow
 
@@ -97,9 +94,8 @@ Instead, I shifted towards maintaining large evolving Markdown investigation not
 - explain why certain commands were used
 - track how understanding developed over time
 
-In hindsight, this produced a much more authentic representation of the investigation process than a heavily templated report.
+In hindsight, this produced a much more authentic representation of the investigation process than a heavily templated report
 
----
 
 ## Version Control & Operational Practice
 
@@ -136,7 +132,7 @@ Most importantly, this phase established the investigative workflow that would l
 ### Dataset
 `1.MSSQL_multiple_failed_logon_EventID_18456.evtx`
 
----
+
 
 This investigation focused on analysing Microsoft SQL Server authentication failures within Windows Event Logs.
 
@@ -144,7 +140,7 @@ One of the first challenges encountered was understanding that Windows EVTX file
 
 This provided an initial understanding of how Windows security telemetry is stored and processed.
 
----
+
 
 ## Initial Observations
 
@@ -159,7 +155,7 @@ Examples included:
 
 The repeated targeting of privileged account names strongly suggested automated credential attacks rather than normal user behaviour.
 
----
+
 
 ## Indicators of Suspicious Behaviour
 
@@ -177,7 +173,7 @@ Source IP identified repeatedly:
 
 The rapid timing between events suggested the authentication attempts were being executed programmatically rather than manually.
 
----
+
 
 ## Key Learning Points
 
@@ -201,7 +197,7 @@ It also reinforced an important analytical principle:
 ### Dataset
 `2.DACL_DCSync_Right_Powerview_Add-DomainObjectAcl.evtx`
 
----
+
 
 This dataset was significantly more difficult to analyse than the MSSQL authentication logs because the activity involved Active Directory permissions and object access rather than straightforward authentication failures.
 
@@ -213,7 +209,7 @@ Most of the investigation involved researching:
 
 Unlike the previous dataset, suspicious activity was not immediately obvious from plain-English log messages.
 
----
+
 
 ## Event ID Analysis
 
@@ -229,7 +225,7 @@ This revealed repeated occurrences of:
 
 These events became the primary focus of the investigation.
 
----
+
 
 ## User & Session Correlation
 
@@ -245,7 +241,7 @@ This introduced an important investigative concept:
 
 > Logon IDs allow analysts to correlate related activity across multiple events.
 
----
+
 
 ## Active Directory Permission Abuse
 
@@ -264,7 +260,7 @@ After researching the associated GUIDs and permission values, it became clear th
 - replication permissions
 - potential DCSync preparation activity
 
----
+
 
 ## Investigation Challenges
 
@@ -295,7 +291,7 @@ Although slower, this process significantly improved understanding of:
 ### Dataset
 `3.LM_typical_IIS_webshell_sysmon_1_10_traces.evtx`
 
----
+
 
 This investigation represented the first point in the project where the analysis felt like tracing actual attacker behaviour rather than simply reviewing logs.
 
@@ -308,7 +304,6 @@ The dataset contained Sysmon process telemetry, including:
 
 Unlike standard Windows Security logs, Sysmon provided significantly richer visibility into process activity.
 
----
 
 ## Investigative Approach
 
@@ -322,7 +317,6 @@ Rather than manually reading every event, the investigation became question-driv
 
 This represented a major shift in investigative thinking compared to earlier sections.
 
----
 
 ## Suspicious Process Activity
 
@@ -344,7 +338,6 @@ This command performs Windows account enumeration.
 
 The critical detail, however, was not the command itself — it was the parent process relationship.
 
----
 
 ## Process Chain Reconstruction
 
@@ -364,7 +357,6 @@ This strongly suggested:
 
 because IIS web server processes should not normally spawn command shells.
 
----
 
 ## Key Learning Outcome
 
@@ -382,13 +374,11 @@ More importantly, it marked the point where investigations became less about ide
 # Phase 3  
 # Linux SSH Brute Force & Authentication Analysis
 
----
 
 This phase focused on analysing Linux authentication logs and identifying SSH brute-force behaviour through command-line investigation techniques.
 
 By this stage of the project, Linux log analysis had started becoming far more intuitive. Earlier investigations relied heavily on broad searches and manual scrolling. During this phase, the analysis became much more structured and investigative in nature.
 
----
 
 ## SSH Authentication Failure Analysis
 
@@ -414,7 +404,6 @@ with approximately:
 
 This strongly suggested automated brute-force activity.
 
----
 
 ## Behavioural Indicators
 
@@ -434,7 +423,6 @@ The repeated targeting of:
 
 matched common SSH attack behaviour frequently observed on internet-facing systems.
 
----
 
 ## Timeline Correlation
 
@@ -447,7 +435,6 @@ This pattern suggested:
 - distributed attack sources
 - repeated credential attacks over time
 
----
 
 ## Investigating Successful Access
 
@@ -468,7 +455,6 @@ This distinction became an important analytical lesson:
 
 > Suspicious activity does not automatically mean compromise.
 
----
 
 ## Workflow Development
 
@@ -490,10 +476,9 @@ The command line stopped feeling like a collection of random tools and started b
 
 This project marked the first time I had worked directly with raw security telemetry across both Windows and Linux systems.
 
-At the beginning, security logs appeared overwhelming and largely unreadable. Over time, the investigation process became significantly more structured and analytical.
+At the beginning, security logs appeared overwhelming and largely unreadable. Over time, the investigation process became significantly more structured and analytical. Eventually leading to me being able to very quickly type out linux commands to be able to effectively and efficiently see patterns and recognise security threats.
 
-The biggest improvement was not memorising Event IDs or Linux commands.
-
+The biggest improvement was not memorising Event IDs or Linux commands. 
 It was learning how to think like an analyst:
 - asking investigative questions
 - identifying patterns
