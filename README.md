@@ -2,6 +2,7 @@
 title: Security Log Analysis Portfolio
 subtitle: Windows & Linux Security Event Investigation
 author: Eli Young
+project: 1 of 4
 ---
 
 # Security Log Analysis  
@@ -136,7 +137,7 @@ Most importantly, this phase established the investigative workflow that would l
 
 This investigation focused on analysing Microsoft SQL Server authentication failures within Windows Event Logs.
 
-One of the first challenges encountered was understanding that Windows EVTX files are stored in a binary format rather than plain text. Because of this, the dataset could not be read directly inside Visual Studio Code and first needed to be converted into XML format using the `python-evtx` library within a Python virtual environment on macOS.
+One of the first challenges encountered was understanding that Windows EVTX files are stored in a binary format rather than plain text. Because of this, the dataset could not be read directly inside Visual Studio Code and first needed to be converted into XML format using the `python-evtx` library within a Python virtual environment on macOS. To do this I made a simple `convert.py` file to change the formatting.
 
 This provided an initial understanding of how Windows security telemetry is stored and processed.
 
@@ -186,8 +187,8 @@ This investigation introduced several foundational concepts:
 
 It also reinforced an important analytical principle:
 
-> Individual events rarely matter on their own.  
-> Patterns across events are what tell the story.
+- Individual events rarely matter on their own.  
+- Patterns across events are what tell the story.
 
 ---
 
